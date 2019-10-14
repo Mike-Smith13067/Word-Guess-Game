@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hangman</title>
+    </head>
+    <body>
+        <script>
+            // <!--Array of potential words-->
+            var words = ["mikesmith", "kevinbrown", "alexhampton", "alixgrillo", "baileemanzer", "bladetompkins",
+                         "brittanyhuber", "brittniemmett", "chloestephens", "christianlevy", "jaysonjphillips",
+                         "jeffreyfleer", "joditivis", "johngarrett", "katiconary", "kevinbrown", "lucasaho", "marktobin",
+                         "nathaneal", "nathanielanderson", "nic", "nicholasherrick", "richardhamp", "sarahlcoffet", 
+                         "stacyholtz", "stevenstott", "tuckerfiumara" ];
+
+            //<-- Pick a random word from array-->
+            var word = words[Math.floor(Math.random() * words.length)];
+            console.log (word);
+
+            //<-- answerArray to display correct number of letters in random word-->
+
+            var answerArray =[];
+                for (var i = 0; i < word.length; i++) {
+                answerArray[i] = "_";
+            }
+            console.log (answerArray);
+            console.log (word.length);
+
+            //<--Create var for remaining letters-->
+
+            var remainingLetters = word.length;
+            console.log (remainingLetters);
+
+                                                //<-- Main Loop-->
+
+            //<-- Letters left to guess loop-->
+            while (remainingLetters > 0) {
+
+            //<-- Show Playerprogress-->
+
+            alert(answerArray.join(" ")); //<-- displays with a "space" between underscores-->
+
+            //<-- Prompt player for  guess -->
+
+            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+
+            //<-- if the guess is cancel-->
+            if (guess == null) {
+                alert("You have chosen to end the game. Good Bye!");
+                break; //<-- ends game-->
+
+            //<-- if the guess is not a letter or more than one letter-->
+            }else if (guess.length !== 1) {
+                alert(" Please enter a single letter");
+
+            //<-- if guess is a single letter--> 
+            }else {
+                for (j= 0; j< word.length; j++) {
+            //<-- if guess is correct-->
+                if (word[j] === guess) {
+                    answerArray[j] = guess; //<-- update answer array with current player guess-->
+                    remainingLetters--; //<--subtract one from remaining guesses-->
+
+                }
+                }
+            }
+            // End of Main Game Loop
+            }
+
+            //<-- Display word-->
+            alert(answerArray.join(""));
+            //<-- Display congratulations-->
+            alert("Great Job! The answer was " + word);
+
+        </script>
+        
+    </body>
+</html>
