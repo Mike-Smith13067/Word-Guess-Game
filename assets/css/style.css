@@ -1,12 +1,37 @@
+.jumbotron {
+    position: absolute;
+    width: 100%;
+    
+}
+
+.card-img {
+    position: relative;
+    left: 5%;
+    width: 450px;
+    height: 200px;
+
+}
+
+.card-img2 {
+    position: relative;
+    width: 450px;
+    height: 200px;
+ 
+}
 .display-4 {
+    position: relative;
     text-align: center;
     font-size: 75px;
     font-family: impact;
-    
     
 }
 .lead {
     text-align: center;
     color: red;
-    text-emphasis: bold;
+    
 }
+
+.my-4 {
+    text-align: center;
+}
+
