@@ -1,0 +1,12 @@
+.display-4 {
+    text-align: center;
+    font-size: 75px;
+    font-family: impact;
+    
+    
+}
+.lead {
+    text-align: center;
+    color: red;
+    text-emphasis: bold;
+}
