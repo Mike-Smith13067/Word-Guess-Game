@@ -35,3 +35,8 @@
     text-align: center;
 }
 
+.card-input {
+    position: absolute;
+    background-color: coral;
+}
+

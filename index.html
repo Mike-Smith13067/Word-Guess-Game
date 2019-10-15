@@ -21,7 +21,7 @@
                               </div>
 
                                 <div class="col-md-4">
-                                <h1 class="display-4">Hangman!! </h1>
+                                <h1 class="display-4">Bootcamp Hangman!! </h1>
                                 </div>
 
                               <div class="col-md-4">
@@ -39,7 +39,23 @@
                                 <a class="btn1 btn-success btn-lg" href="#" role="button">OK</a>
                                 <a class="btn2 btn-danger btn-lg" href="#" role="button">Cancel</a>
                     </div>
-            </container>
+        </container>
+        <container2>
+            <!-- Player input-->
+                    <div class = row>
+                        <div class = "col-md-4">
+                            <div class = "playerInput">
+
+                                <div class="card-input">
+                                    <div class="card-body">
+                                      Please enter a single letter
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </container2>
+            
 
         <script>
             // <!--Array of potential words-->
@@ -48,6 +64,20 @@
                          "jeffreyfleer", "joditivis", "johngarrett", "katiconary", "kevinbrown", "lucasaho", "marktobin",
                          "nathaneal", "nathanielanderson", "nic", "nicholasherrick", "richardhamp", "sarahlcoffet", 
                          "stacyholtz", "stevenstott", "tuckerfiumara" ];
+
+            //<< -- variables for wins, losses -->
+            var wins = 0;
+            var lossees = 0;
+
+            //<<-- variables for player tracking-->
+            var winsText = document.getElementById("wins-text");
+            var lossesText = document.getElementById("losses-text");
+
+            document.onkeyup = function(event) {
+                var userGuess = event.key;
+            }
+        
+
         
 
 
