@@ -50,6 +50,9 @@
     top: 200px;
     left: 140px;
 }
+.cardbody {
+    font-size: 24px;
+}
 
 .container3 {
     border-width: 5px;
