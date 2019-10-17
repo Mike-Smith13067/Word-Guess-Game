@@ -28,7 +28,7 @@
 .lead {
     text-align: center;
     color: red;
-    font-family: century;
+    font-family: century-go
     
 }
 
@@ -39,15 +39,19 @@
 .card-input {
     position: absolute;
     background-color: coral;
-    top: 500px;
-}
-.row2 {
-    position: relative;
-
+    color: black;
+    width: 300px;
+    left: 140px;
 }
 
-.col-md-8 {
-    position: relative;
-    
+.card-input2 {
+    position: absolute;
+    background-color: coral;
+    top: 200px;
+    left: 140px;
 }
 
+.container3 {
+    border-width: 5px;
+    border-style: solid;
+}

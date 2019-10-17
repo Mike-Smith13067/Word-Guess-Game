@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Hangman</title>
-    
+
+            <link rel="stylesheet"type="text/css" href="assets/css/reset.css">
             <link rel="stylesheet"type="text/css" href="assets/css/style.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
                   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
@@ -17,7 +18,7 @@
         <div class="jumbotron">
             <div class = row>
                 <div class="col-md-4">
-                                <img src="assets/images/noose.jpg" class="card-img" alt="noose">
+                                <img src="assets/images/swingnoose.webp" class="card-img" alt="noose">
                 </div>
 
                 <div class="col-md-4">
@@ -25,7 +26,7 @@
                 </div>
 
                 <div class="col-md-4">
-                                    <img src="assets/images/noose.jpg" class="card-img2" alt="noose">
+                                    <img src="assets/images/swingnoose.webp" class="card-img2" alt="noose">
                 </div>
                        
             </div>
@@ -35,10 +36,7 @@
         <container-buttons>
 
             <div class="my-4">
-                <p>Click 'OK' to begin or 'Cancel' to quit.</p>
-                      
-
-                <a class="btn1 btn-success btn-lg" href="#" role="button">OK</a>
+                <p>Click 'Cancel' to quit.</p>                
                 <a class="btn2 btn-danger btn-lg" href="#" role="button">Cancel</a>
                 
             </div>
@@ -47,21 +45,82 @@
         </container-buttons>
 
     </container>
+
         <container2>
             <!-- Player input-->
-                    <div class = row>
-                        <div class = "col-md-4">
-                            <div class = "playerInput">
 
-                                <div class="card-input">
-                                    <div class="card-body">
-                                      Please enter a single letter
-                                    </div>
+                <div class = "row">
+                    <div class = "col-md-4">
+                        <div class = "playerInput">
+                            <div class="card-input">
+                                <div class="card-body">
+                                    Player wins =
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class = "col-md-4">
+                        <div class = "playerInput">
+                            <div class="card-input">
+                                <div class="card-body">
+                                  Please enter a single letter: 
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "col-md-4">
+                            <div class = "playerInput">
+                                <div class="card-input">
+                                    <div class="card-body">
+                                      Player Losses =
+                                    </div>
+                                </div>
+                            </div>
+                    </div>    
+                </div>
+
         </container2>
+
+        <container3>
+                <!-- Player input-->
+    
+                    <div class = "row">
+                        <div class = "col-md-4">
+                            <div class = "playerInput">
+                                <div class="card-input2">
+                                    <div class="card-body">
+                                      Player Wins = 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class = "col-md-4">
+                            <div class = "playerInput">
+                                <div class="card-input2">
+                                    <div class="card-body">
+                                      Current Word
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class = "col-md-4">
+                                <div class = "playerInput">
+                                    <div class="card-input2">
+                                        <div class="card-body">
+                                          Guessed Letters !!
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>    
+                    </div>
+    
+            </container3>
             
 
         <script>
@@ -74,18 +133,15 @@
 
             //<< -- variables for wins, losses -->
             var wins = 0;
-            var lossees = 0;
+            var losses = 0;
+            console.log (wins);
+            console.log (losses);
 
             //<<-- variables for player tracking-->
             var winsText = document.getElementById("wins-text");
             var lossesText = document.getElementById("losses-text");
-
-            document.onkeyup = function(event) {
-                var userGuess = event.key;
-            }
-        
-
-        
+            var guessedLetters = [];
+                console.log (guessedLetters);       
 
 
             //<-- Pick a random word from array-->
@@ -115,9 +171,12 @@
 
             alert(answerArray.join(" ")); //<-- displays with a "space" between underscores-->
 
-            //<-- Prompt player for  guess -->
+            //<-- Prompt player for  guess-->
 
-            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+                document.onkeyup = function(event) {
+                var guess = document.getElementById(guess);
+                console.log (guess);
+                }
 
             //<-- if the guess is cancel-->
             if (guess == null) {
