@@ -16,8 +16,6 @@
         console.log (losses);
 
         //<<-- variables for player tracking-->
-        var winsText = document.getElementById("wins-text");
-        var lossesText = document.getElementById("losses-text");
         var guessedLetters = [];
             console.log (guessedLetters);       
 
@@ -66,24 +64,46 @@
         document.onkeyup=function(event) {
             var guess = event.key;
             if(wordArray.includes(guess)){
+                remainingLetters--;
                 console.log(guess);
-                guessedLetters.push(guess);
-                remainingGuesses -- ;
-                console.log (guessedLetters);
+                console.log(remainingLetters);                    
                 updateWordGuess();
                  } 
-                
-            }     
-                
-                if(remainingGuesses===0);
-                    alert ("Game Over!! You Swing!!");
-        var guessedLetters =[];
-        console.log (guessedLetters);
+                 console.log(remainingLetters);
+                 guessedLetters.push(guess);
+                 document.getElementById("lettersGuessed").textContent= "Guessed Letters " + guessedLetters;   
 
+                 remainingGuesses--;
+                console.log (guessedLetters);
+                document.getElementById("rgCount").textContent= "remainingGuesses: " + remainingGuesses;
+                console.log ("rg",remainingGuesses);
 
+                if(remainingLetters = 0) {
+                    // Reset Game variables
+                    remainingGuesses = 15;
+                    document.getElementById("rgCount").textContent= "remainingGuesses: " + remainingGuesses;
+                    word = words[Math.floor(Math.random() * words.length)];
+                    guessedLetters = [];
+                    document.getElementById("lettersGuessed").textContent= "Guessed Letters " + guessedLetters;
+                    wins++
+                    alert("Player Wins!!");
+                    document.getElementById("winsText").textContent= "Player Wins " + wins;
 
+                }
+                               
+                if(remainingGuesses===0){
+                    alert ("Game Over!! You Swing!!")
+                    // Reset Game variables
+                    remainingGuesses = 15;
+                    document.getElementById("rgCount").textContent= "remainingGuesses: " + remainingGuesses;
+                    word = words[Math.floor(Math.random() * words.length)];
+                    guessedLetters = [];
+                    document.getElementById("lettersGuessed").textContent= "Guessed Letters " + guessedLetters;
+                    losses++;
+                    document.getElementById("lossesText").textContent= "Player Losses " + losses;
 
-
+                }
+            }
         // End of Main Game Loop
 
         //<-- Display word-->
@@ -146,10 +166,11 @@
                     <div class = "col-md-4">
                         <div class = "playerInput">
                             <div class="card-input">
-                                <div class="card-body">
-                                    <script type="text/javascript">
-                                    document.write ("Player wins =" + wins);
-                                    </script>
+                                <div class="card-body" id = "winsText">
+                                    Player Wins: 
+                                    <!-- <script type="text/javascript"> -->
+                                    <!-- document.write ("Player wins =" + wins); -->
+                                    <!-- </script> -->
                                 </div>
                             </div>
                         </div>
@@ -160,7 +181,9 @@
                             <div class="card-input">
                                 <div class="card-body">
                                   Please enter a single letter:  
-
+                                  <script type="text/javascript">
+            
+                                    </script>
                                 </div>
                                 
                             </div>
@@ -170,10 +193,10 @@
                     <div class = "col-md-4">
                             <div class = "playerInput">
                                 <div class="card-input">
-                                    <div class="card-body">
-                                            <script type="text/javascript">
+                                    <div class="card-body" id = "lossesText">
+                                            <!-- <script type="text/javascript">
                                                 document.write ("Player losses =" + losses);
-                                                </script>
+                                                </script> -->
                                     </div>
                                 </div>
                             </div>
@@ -189,10 +212,11 @@
                         <div class = "col-md-4">
                             <div class = "playerInput">
                                 <div class="card-input2">
-                                    <div class="card-body">
-                                        <script type="text/javascript">
-                                            document.write ("Remaining Guesses =" + remainingGuesses);
-                                            </script>
+                                    <div class="card-body " id = "rgCount">
+                                        Remaining Guesses: 
+                                        <!-- <script type="text/javascript"> -->
+                                            <!-- document.write ("Remaining Guesses =" + remainingGuesses); -->
+                                            <!-- </script> -->
                                     </div>
                                 </div>
                             </div>
@@ -201,9 +225,9 @@
                         <div class = "col-md-4">
                             <div class = "playerInput">
                                 <div class="card-input2">
-                                    <div class="card-body" id = "answerText">Current Word
+                                    <div class="card-body" id = "answerText">
                                         <script type = "text/javascript">
-                                        document.write (answerArray);
+                                        document.write ("Current Word" + answerArray);
                                     </script>
                                       
                                     </div>
@@ -214,8 +238,10 @@
                         <div class = "col-md-4">
                                 <div class = "playerInput">
                                     <div class="card-input2">
-                                        <div class="card-body">
-                                          Guessed Letters !!
+                                        <div class="card-body" id = "lettersGuessed">
+                                            <!-- <script type="text/javascript">
+                                                document.write ("Guessed Letters" + guessedLetters);
+                                                </script> -->
                                         </div>
                                     </div>
                                 </div>
