@@ -11,6 +11,7 @@
         //<< -- variables for wins, losses -->
         var wins = 0;
         var losses = 0;
+        var remainingGuesses = 15;
         console.log (wins);
         console.log (losses);
 
@@ -31,8 +32,15 @@
             for (var i = 0; i < word.length; i++) {
             answerArray[i] = "_";
         }
+
+        var wordArray =[];
+            for (var i =0; i < word.length; i++) {
+            wordArray[i] = word[i];
+            
+            }
         console.log (answerArray);
         console.log (word.length);
+        console.log (wordArray);
 
         //<--Create var for remaining letters-->
 
@@ -41,44 +49,42 @@
 
                                             //<-- Main Loop-->
 
-        //<-- Letters left to guess loop-->
-        while (remainingLetters > 0) {
-
-        //<-- Show Playerprogress-->
-
-        alert(answerArray.join(" ")); //<-- displays with a "space" between underscores-->
 
         //<-- Prompt player for  guess-->
 
-        function myFunction() {
-            var guess = document.getElementById("playerGuess").value; 
-            document.getElementById("demo").innerHTML = guess;
-        }
-        console.log (guess);
-
-        //<-- if the guess is cancel-->
-        if (guess == null) {
-            alert("You have chosen to end the game. Good Bye!");
-            break; //<-- ends game-->
-
-        //<-- if the guess is not a letter or more than one letter-->
-        }else if (guess.length !== 1) {
-            alert(" Please enter a single letter");
-
-        //<-- if guess is a single letter--> 
-        }else {
-            for (j= 0; j< word.length; j++) {
-        //<-- if guess is correct-->
-            if (word[j] === guess) {
-                answerArray[j] = guess; //<-- update answer array with current player guess-->
-                remainingLetters--; //<--subtract one from remaining guesses-->
-                wins++;
+            function updateWordGuess(letter) {
+                for(var i = 0; i< answerArray.length; i++) {
+                    if (wordArray[i] == letter) {
+                    answerArray[i] = letter;
+                    }
+                }
+                document.getElementById("answerText").textContent = answerArray;
 
             }
-            }
-        }
+
+
+        document.onkeyup=function(event) {
+            var guess = event.key;
+            if(wordArray.includes(guess)){
+                console.log(guess);
+                guessedLetters.push(guess);
+                remainingGuesses -- ;
+                console.log (guessedLetters);
+                updateWordGuess();
+                 } 
+                
+            }     
+                
+                if(remainingGuesses===0);
+                    alert ("Game Over!! You Swing!!");
+        var guessedLetters =[];
+        console.log (guessedLetters);
+
+
+
+
+
         // End of Main Game Loop
-        }
 
         //<-- Display word-->
         alert(answerArray.join(""));
@@ -153,7 +159,7 @@
                         <div class = "playerInput">
                             <div class="card-input">
                                 <div class="card-body">
-                                  Please enter a single letter: <input type="text" id="playerGuess" onkeyup="myFunction()"> 
+                                  Please enter a single letter:  
 
                                 </div>
                                 
@@ -184,7 +190,9 @@
                             <div class = "playerInput">
                                 <div class="card-input2">
                                     <div class="card-body">
-                                      Player Wins = 
+                                        <script type="text/javascript">
+                                            document.write ("Remaining Guesses =" + remainingGuesses);
+                                            </script>
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +201,7 @@
                         <div class = "col-md-4">
                             <div class = "playerInput">
                                 <div class="card-input2">
-                                    <div class="card-body">Current Word
+                                    <div class="card-body" id = "answerText">Current Word
                                         <script type = "text/javascript">
                                         document.write (answerArray);
                                     </script>
