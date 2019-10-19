@@ -28,7 +28,8 @@
 .lead {
     text-align: center;
     color: red;
-    font-family: century-go
+    font-family: century;
+    font-size: 34px;
     
 }
 
@@ -40,21 +41,39 @@
     position: absolute;
     background-color: coral;
     color: black;
+    border-style: solid;
+    border-width: 5px;
     width: 300px;
     left: 140px;
+    top: 10px;
 }
 
 .card-input2 {
     position: absolute;
     background-color: coral;
-    top: 200px;
+    color: black;
+    border-style: solid;
+    border-width: 5px;
+    width: 300px;
     left: 140px;
+    top: 150px;
 }
-.cardbody {
+
+    
+
+.container3 {
+    position: absolute;
+    border-width: 25px;
+    border-style: solid;
+    background-color: sandybrown;
+    height: 350px;
+    width: 100%;
+    top: 400px;
+    left:1px;
+    
+}
+.text {
     font-size: 24px;
 }
 
-.container3 {
-    border-width: 5px;
-    border-style: solid;
-}
+
