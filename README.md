@@ -16,3 +16,7 @@ Tools/Languages used:
     Custom CSS
     Bootstrap CSS
     Javascript
+
+    Thanks to:
+        Bradley knutson
+        Namita Shenai
