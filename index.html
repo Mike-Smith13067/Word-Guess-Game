@@ -1,274 +1,146 @@
 <!DOCTYPE html>
 
-<script>
-        // <!--Array of potential words-->
-        var words = ["mikesmith", "kevinbrown", "alexhampton", "alixgrillo", "baileemanzer", "bladetompkins",
-                     "brittanyhuber", "brittniemmett", "chloestephens", "christianlevy", "jaysonjphillips",
-                     "jeffreyfleer", "joditivis", "johngarrett", "katiconary", "kevinbrown", "lucasaho", "marktobin",
-                     "nathaneal", "nathanielanderson", "nic", "nicholasherrick", "richardhamp", "sarahlcoffet", 
-                     "stacyholtz", "stevenstott", "tuckerfiumara" ];
 
-        //<< -- variables for wins, losses -->
-        var wins = 0;
-        var losses = 0;
-        var remainingGuesses = 20;
-        console.log (wins);
-        console.log (losses);
-
-        //<<-- variables for player tracking-->
-        var guessedLetters = [];
-            console.log (guessedLetters);       
-
-
-        //<-- Pick a random word from array-->
-        var word = words[Math.floor(Math.random() * words.length)];
-        console.log (word);
-
-        //<-- answerArray to display correct number of letters in random word-->
-
-        var answerArray =[];
-            for (var i = 0; i < word.length; i++) {
-            answerArray[i] = "_";
-        }
-
-        var wordArray =[];
-            for (var i =0; i < word.length; i++) {
-            wordArray[i] = word[i];
-            
-            }
-        console.log (answerArray);
-        console.log (word.length);
-
-        //<--Create variable for remaining letters-->
-
-        var remainingLetters = word.length;
-        console.log (remainingLetters);
-
-                                            //<-- Main Loop-->
-
-
-        //<-- Prompt player for  guess-->
-
-
-        document.onkeyup=function(event) {
-            var guess = event.key;
-            if(wordArray.includes(guess)){               
-                console.log(guess);
-                console.log(remainingLetters);  //reads zero on second keypress                  
-                updateWordGuess(guess);
-                document.getElementById("answerText").textContent = "Current Word: " + answerArray;
-                console.log(answerArray);                
-                 } 
-                 function updateWordGuess(guess) {
-                for(var i = 0; i< answerArray.length; i++) {
-                    if (wordArray[i] == guess) {
-                    answerArray[i] = guess;
-                    }
-                }
-                
-            }
-                 remainingLetters--;
-                 console.log(remainingLetters);
-                 guessedLetters.push(guess);
-                 if (guess == " "){
-                     alert("Please press a character key");
-
-                 }
-                 
-                 document.getElementById("lettersGuessed").textContent= "Guessed Letters " + guessedLetters;   
-                 remainingGuesses--;
-                console.log (guessedLetters);
-                document.getElementById("rgCount").textContent= "remainingGuesses: " + remainingGuesses;
-                console.log(answerArray);
-                
-                if(wordArray.toString() == answerArray.toString()) {
-                    // Reset Game variables
-                    remainingGuesses = 20;
-                    document.getElementById("rgCount").textContent= "remainingGuesses: " + remainingGuesses;
-                    word = words[Math.floor(Math.random() * words.length)];
-                    guessedLetters = [];
-                    console.log (word);
-                    document.getElementById("lettersGuessed").textContent= "Guessed Letters " + guessedLetters;
-                    
-                    alert("Player Wins!! Press spacebar to play again!!");
-                    answerArray=[];
-                    for (var i = 0; i < word.length; i++) {
-                            answerArray[i] = "_";
-                         }
-                    wordArray=[];
-                    for (var i = 0; i < word.length; i++) {
-                            wordArray[i] = word[i];
-                        }
-                        wins++;
-                        document.getElementById("winsText").textContent= "Player Wins " + wins;
-                        document.getElementById("answerText").textContent = "" + answerArray;
-                        
-                }                                     
-                if(remainingGuesses===0){
-                    alert ("Game Over!! You Swing!! The correct word was " + word + " Press spacebar to play again!")
-                    // Reset Game variables
-                    remainingGuesses = 20;
-                    document.getElementById("rgCount").textContent= "remainingGuesses: " + remainingGuesses;
-                    word = words[Math.floor(Math.random() * words.length)];
-                    guessedLetters = [];
-                    console.log(word);
-                    document.getElementById("lettersGuessed").textContent= "Guessed Letters: " + guessedLetters;
-                    
-                    answerArray =[];
-                    for (var i = 0; i < word.length; i++) {
-                            answerArray[i] = "_";
-                            }
-                            wordArray=[];
-                    for (var i = 0; i < word.length; i++) {
-                            wordArray[i] = word[i];
-                        }
-                        losses++;
-                    document.getElementById("lossesText").textContent= "Player Losses: " + losses;
-                    document.getElementById("answerText").textContent = "Current Word: " + answerArray;
-                }
-            }
-        // End of Main Game Loop
-
-    </script>
 <html>
-    <head>
-        <title>Hangman</title>
 
-            <link rel="stylesheet"type="text/css" href="assets/css/reset.css">
-            <link rel="stylesheet"type="text/css" href="assets/css/style.css">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-                  crossorigin="anonymous">
-            <meta charset="UTF-8">
-    </head>
+<head>
+    <title>Hangman</title>
 
-    <body>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+</head>
+
+<body>
 
     <container>
 
         <div class="jumbotron">
-            <div class = row>
+            <div class=row>
                 <div class="col-md-4">
-                                <img src="assets/images/swingnoose.webp" class="card-img" alt="noose">
+                    <img src="assets/images/swingnoose.webp" class="card-img" alt="noose">
                 </div>
 
                 <div class="col-md-4">
-                                <h1 class="display-4">Bootcamp Hangman!! </h1>
+                    <h1 class="display-4">Bootcamp Hangman!! </h1>
                 </div>
 
                 <div class="col-md-4">
-                                    <img src="assets/images/swingnoose.webp" class="card-img2" alt="noose">
+                    <img src="assets/images/swingnoose.webp" class="card-img2" alt="noose">
                 </div>
-                       
-            </div>
-                        
-                            <p class="lead"> Try not to swing!!</p>
-                           
-        <container-buttons>
 
-            <div class="my-4">
-                <p>Click 'Cancel' to quit and catch up on the latest scores!</p>                
-                <a class="btn2 btn-danger btn-lg" href="https://www.espn.com/" role="button">Cancel</a>
-                
             </div>
 
-                        
-        </container-buttons>
+            <p class="lead"> Try not to swing!!</p>
+
+            <container-buttons>
+
+                <div class="my-4">
+                    <p>Click 'Cancel' to quit and catch up on the latest scores!</p>
+                    <a class="btn2 btn-danger btn-lg" href="https://www.espn.com/" role="button">Cancel</a>
+
+                </div>
+
+
+            </container-buttons>
 
     </container>
 
-        <container3 class = "container3">
-            <!-- Player input-->
+    <container3 class="container3">
+        <!-- Player input-->
 
-                <div class = "row">
-                    <div class = "col-md-4">
-                        <div class = "playerInput">
-                            <div class="card-input">
-                                <div class="card-body text" id = "winsText">
-                                    Player Wins: 
-                                    <!-- <script type="text/javascript"> -->
-                                    <!-- document.write ("Player wins =" + wins); -->
-                                    <!-- </script> -->
-                                </div>
-                            </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="playerInput">
+                    <div class="card-input">
+                        <div class="card-body text" id="winsText">
+                            Player Wins:
+                            <!-- <script type="text/javascript"> -->
+                            <!-- document.write ("Player wins =" + wins); -->
+                            <!-- </script> -->
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class = "col-md-4">
-                        <div class = "playerInput">
-                            <div class="card-input">
-                                  <div class="card-body text">
-                                    Please type a letter to begin:
-                                </div>
-                                
-                            </div>
+            <div class="col-md-4">
+                <div class="playerInput">
+                    <div class="card-input">
+                        <div class="card-body text">
+                            Please type a letter to begin:
                         </div>
-                    </div>
 
-                    <div class = "col-md-4">
-                            <div class = "playerInput">
-                                <div class="card-input">
-                                    <div class="card-body text" id = "lossesText">
-                                        Player Losses:
-                                            <!-- <script type="text/javascript">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="playerInput">
+                    <div class="card-input">
+                        <div class="card-body text" id="lossesText">
+                            Player Losses:
+                            <!-- <script type="text/javascript">
                                                 document.write ("Player losses =" + losses);
                                                 </script> -->
-                                    </div>
-                                </div>
-                            </div>
-                    </div>    
-                </div>
-
-
-
-        
-                <!-- Player input-->
-    
-                    <div class = "row">
-                        <div class = "col-md-4">
-                            <div class = "playerInput">
-                                <div class="card-input2">
-                                    <div class="card-body text" id = "rgCount">
-                                        Remaining Guesses: 
-                                        <!-- <script type="text/javascript"> -->
-                                            <!-- document.write ("Remaining Guesses =" + remainingGuesses); -->
-                                            <!-- </script> -->
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-    
-                        <div class = "col-md-4">
-                            <div class = "playerInput">
-                                <div class="card-input2">
-                                    <div class="card-body text" id = "answerText">Current Word
-                                        <!-- <script type = "text/javascript">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Player input-->
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="playerInput">
+                    <div class="card-input2">
+                        <div class="card-body text" id="rgCount">
+                            Remaining Guesses:
+                            <!-- <script type="text/javascript"> -->
+                            <!-- document.write ("Remaining Guesses =" + remainingGuesses); -->
+                            <!-- </script> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="playerInput">
+                    <div class="card-input2">
+                        <div class="card-body text" id="answerText">Current Word
+                            <!-- <script type = "text/javascript">
                                         document.write ("Current Word" + answerArray);
                                     </script> -->
-                                      
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
-    
-                        <div class = "col-md-4">
-                                <div class = "playerInput">
-                                    <div class="card-input2">
-                                        <div class="card-body text" id = "lettersGuessed">
-                                            Letter Guessed:
-                                            <!-- <script type="text/javascript">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="playerInput">
+                    <div class="card-input2">
+                        <div class="card-body text" id="lettersGuessed">
+                            Letter Guessed:
+                            <!-- <script type="text/javascript">
                                                 document.write ("Guessed Letters" + guessedLetters);
                                                 </script> -->
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>    
+                        </div>
                     </div>
-    
-            </container3>
-            
+                </div>
+            </div>
+        </div>
 
-        
-        
-    </body>
+    </container3>
+
+
+<script src="assets/javascript/game.js"></script>
+
+</body>
+
 </html>

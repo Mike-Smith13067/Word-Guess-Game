@@ -1,4 +1,78 @@
-* Select all spans that are immediate children of buttons */
-button > span {
-    font-size: 2.5rem;
+.jumbotron {
+    position: absolute;
+    width: 100%;
+    
 }
+
+.card-img {
+    position: relative;
+    left: 5%;
+    width: 450px;
+    height: 200px;
+
+}
+
+.card-img2 {
+    position: relative;
+    width: 450px;
+    height: 200px;
+ 
+}
+.display-4 {
+    position: relative;
+    text-align: center;
+    font-size: 75px;
+    font-family: impact;
+    
+}
+.lead {
+    text-align: center;
+    color: red;
+    font-family: century;
+    font-size: 34px;
+    
+}
+
+.my-4 {
+    text-align: center;
+}
+
+.card-input {
+    position: absolute;
+    background-color: coral;
+    color: black;
+    border-style: solid;
+    border-width: 5px;
+    width: 300px;
+    left: 140px;
+    top: 10px;
+}
+
+.card-input2 {
+    position: absolute;
+    background-color: coral;
+    color: black;
+    border-style: solid;
+    border-width: 5px;
+    width: 300px;
+    left: 140px;
+    top: 150px;
+}
+
+    
+
+.container3 {
+    position: absolute;
+    border-width: 25px;
+    border-style: solid;
+    background-color: sandybrown;
+    height: 350px;
+    width: 100%;
+    top: 400px;
+    left:1px;
+    
+}
+.text {
+    font-size: 24px;
+}
+
